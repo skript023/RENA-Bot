@@ -1,0 +1,22 @@
+{
+  "name": "hell-gate-keeper",
+  "version": "1.0.0",
+  "description": "discord bot as assistance",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/main.ts",
+    "start": "node dist/main.js",
+    "build": "tsup src/main.ts --minify"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "Fatur Muhammad",
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^8.2.1",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3"
+  }
+}
