@@ -1,13 +1,16 @@
 import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractionOptionResolver } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
-  .setName("remove_role")
+  .setName("removeRole")
   .setDescription("this is auth command");
 
 export async function execute(interaction: CommandInteraction) 
 {
 	const member = interaction.member as GuildMember;
 	const option = interaction.options as CommandInteractionOptionResolver;
+
+	if (interaction.channel?.id !== '349129439927468032')
+		return;
 
 	if (member.roles.cache.some(role => role.name === "Administrator") || member.roles.cache.some(role => role.name === 'Master')) 
 	{

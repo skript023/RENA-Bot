@@ -17,6 +17,9 @@ export async function execute(interaction: CommandInteraction)
 
     const sig = opts.getString("signature");
 
+	if (interaction.channel?.id !== '349129439927468032')
+		return;
+
 	if (sig)
 	{
 		if (signature.validate(sig))
