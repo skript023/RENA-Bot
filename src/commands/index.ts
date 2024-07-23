@@ -11,6 +11,7 @@ import * as get_role from './get-role';
 import * as set_role from './set-role';
 import * as kick from './kick';
 import * as ban from './ban';
+import * as avatar from './avatar';
 
 export const commands = {
     ping,
@@ -25,5 +26,6 @@ export const commands = {
 	'get-role': get_role,
 	'set-role': set_role,
 	kick,
-	ban
+	ban,
+	avatar
 };
