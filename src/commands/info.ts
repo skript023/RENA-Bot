@@ -16,6 +16,11 @@ export async function execute(interaction: CommandInteraction)
     const opts = interaction.options as CommandInteractionOptionResolver;
     const message = opts.getString("param");
 
+	const channel = interaction.guild?.channels.cache.find(channel => channel.name === 'bot-room');
+
+	if (!channel)
+		return interaction.reply(`You cannot use this command in this channel`);
+
 	let reply = `Bot Information\nName: ${info.name}\nAuthor: ${info.author}\nVersion:${info.version}\n${info.server}`;
 
     if (message === 'author')

@@ -1,3 +1,4 @@
+import { roles } from '@/config/role';
 import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractionOptionResolver, User, Role } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
@@ -18,10 +19,14 @@ export async function execute(interaction: CommandInteraction)
 	const member = interaction.member as GuildMember;
 	const option = interaction.options as CommandInteractionOptionResolver;
 
-	if (interaction.channel?.id !== '349129439927468032')
-		return;
+	// if (interaction.channel?.id !== '349129439927468032')
+	// 	return;
+	const channel = interaction.guild?.channels.cache.find(channel => channel.name === 'bot-room');
 
-	if (member.roles.cache.some(role => role.name === "Administrator" || role.name === 'Master')) 
+	if (!channel)
+		return interaction.reply(`You cannot use this command in this channel`);
+
+	if (member.roles.cache.some(role => roles.includes(role.name))) 
 	{
         const user = option.getUser("user") as User;
 		const role = option.getRole("role") as Role;

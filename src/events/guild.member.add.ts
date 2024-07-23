@@ -4,7 +4,7 @@ export const event = {
 	name: "guildMemberAdd",
 	type: "on",
 	execute: (member: GuildMember) => {
-		const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome-goodbye') as any;
+		const channel = member.guild.channels.cache.some(ch => ch.name === 'welcome-goodbye') as any;
 
 		if (!channel) return;
 

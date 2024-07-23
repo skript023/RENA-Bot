@@ -1,3 +1,4 @@
+import { roles } from '@/config/role';
 import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractionOptionResolver, User, Role } from 'discord.js';
 import signale from 'signale';
 
@@ -24,6 +25,11 @@ export async function execute(interaction: CommandInteraction)
 
 	signale.await(`set role ${role.name} to ${user.displayName}`);
 
+	const channel = interaction.guild?.channels.cache.find(channel => channel.name === 'bot-room');
+
+	if (!channel)
+		return interaction.reply(`You cannot use this command in this channel`);
+
 	if (!interaction.guild) 
 	{
 		return interaction.reply('This command can only be used in a server.');
@@ -33,7 +39,7 @@ export async function execute(interaction: CommandInteraction)
 	
 	if (member && 'roles' in member) 
 	{
-		if (member.roles.cache.some(role => role.name === 'Administrator' || role.name === 'Master'))
+		if (member.roles.cache.some(role => roles.includes(role.name)))
 		{
 			const target = await interaction.guild.members.fetch(user.id);
 			

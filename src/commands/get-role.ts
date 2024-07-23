@@ -8,6 +8,11 @@ export async function execute(interaction: CommandInteraction)
 {
 	const user = interaction.user;
 
+	const channel = interaction.guild?.channels.cache.find(channel => channel.name === 'bot-room');
+
+	if (!channel)
+		return interaction.reply(`You cannot use this command in this channel`);
+
 	if (!interaction.guild) 
 	{
 		return interaction.reply('This command can only be used in a server.');

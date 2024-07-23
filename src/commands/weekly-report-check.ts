@@ -1,4 +1,5 @@
 import { attendance } from '@/api/rena/attendance/attendance.rena';
+import { roles } from '@/config/role';
 import { CommandInteraction, SlashCommandBuilder, CommandInteractionOptionResolver, GuildMember } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
@@ -23,7 +24,12 @@ export async function execute(interaction: CommandInteraction)
 
 	const member = interaction.member as GuildMember;
 
-	if(!member.roles.cache.some(r => r.name === 'Master'))
+	const channel = interaction.guild?.channels.cache.find(channel => channel.name === 'bot-room');
+
+	if (!channel)
+		return interaction.reply(`You cannot use this command in this channel`);
+
+	if(!member.roles.cache.some(role => roles.includes(role.name)))
 	{
 		return interaction.reply('You dont have permission to access this command');
 	} 

@@ -17,8 +17,10 @@ export async function execute(interaction: CommandInteraction)
 
     const sig = opts.getString("signature");
 
-	if (interaction.channel?.id !== '349129439927468032')
-		return;
+	const channel = interaction.guild?.channels.cache.find(channel => channel.name === 'bot-room');
+
+	if (!channel)
+		return interaction.reply(`You cannot use this command in this channel`);
 
 	if (sig)
 	{

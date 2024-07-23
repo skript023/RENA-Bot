@@ -2,6 +2,7 @@ import { ActivityType, Client } from 'discord.js';
 import { deployCommands } from '@/deploy.command';
 import { config } from '@/config/config';
 import signale from 'signale';
+import { guilds } from '@/config/guilds';
 
 export const event = {
 	name: "ready",
@@ -17,7 +18,7 @@ export const event = {
 
 		const channel = client.channels.cache.get('349824328520695818') as any;
 
-		deployCommands({ guildId: config.DISCORD_HELL_GATE_GUILD_ID as string });
+		deployCommands();
 		
 		// if (channel) 
 		// {

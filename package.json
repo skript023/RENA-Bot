@@ -1,5 +1,5 @@
 {
-  "name": "hell-gate-keeper",
+  "name": "rena-service",
   "version": "1.0.0",
   "description": "discord bot as assistance",
   "main": "dist/main.js",

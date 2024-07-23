@@ -13,7 +13,12 @@ export const data = new SlashCommandBuilder()
 export async function execute(interaction: CommandInteraction) {
     // Retrieve the argument value
     const opts = interaction.options as CommandInteractionOptionResolver;
-    const message = opts.getString("message")
+    const message = opts.getString("message");
+
+	const channel = interaction.guild?.channels.cache.find(channel => channel.name === 'bot-room');
+
+	if (!channel)
+		return interaction.reply(`You cannot use this command in this channel`);
 
     // Reply with the default "Pong!" or include the provided message
     const reply = message ? `Pong! You said: ${message}` : "Pong!";
