@@ -2,7 +2,7 @@
   "name": "hell-gate-keeper",
   "version": "1.0.0",
   "description": "discord bot as assistance",
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/main.ts",

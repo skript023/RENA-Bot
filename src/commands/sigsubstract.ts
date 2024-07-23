@@ -8,7 +8,7 @@ export const data = new SlashCommandBuilder()
     option
       .setName("signature")
       .setDescription("The signature include for substraction")
-      .setRequired(false)
+      .setRequired(true)
   );
 
 export async function execute(interaction: CommandInteraction) 
