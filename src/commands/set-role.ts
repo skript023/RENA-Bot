@@ -12,7 +12,7 @@ export const data = new SlashCommandBuilder()
 export async function execute(interaction: CommandInteraction) 
 {
 	const opts = interaction.options as CommandInteractionOptionResolver;
-	const user = opts.getMentionable('mention') as User;
+	const user = opts.getUser('mention') as User;
 
 	if (!interaction.guild) 
 	{
