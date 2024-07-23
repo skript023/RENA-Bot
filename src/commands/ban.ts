@@ -1,8 +1,8 @@
 import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractionOptionResolver, User } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
-  .setName("set_role")
-  .setDescription("this is auth command").addStringOption(option => 
+  .setName("ban")
+  .setDescription("this is ban command").addStringOption(option => 
     option
       .setName("mention")
       .setDescription("The mention user to add role")

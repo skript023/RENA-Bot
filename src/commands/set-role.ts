@@ -2,7 +2,7 @@ import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractio
 
 export const data = new SlashCommandBuilder()
   .setName("set_role")
-  .setDescription("this is auth command").addStringOption(option => 
+  .setDescription("this is set user role command").addStringOption(option => 
     option
       .setName("mention")
       .setDescription("The mention user to add role")

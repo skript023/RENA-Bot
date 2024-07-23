@@ -7,6 +7,10 @@ import * as remove_role from './remove-role';
 import * as weekly_report_check from './weekly-report-check';
 import * as weekly_report from './weekly-report';
 import * as present from './attendance';
+import * as get_role from './get-role';
+import * as set_role from './set-role';
+import * as kick from './kick';
+import * as ban from './ban';
 
 export const commands = {
     ping,
@@ -17,5 +21,9 @@ export const commands = {
 	remove_role,
 	weekly_report_check,
 	weekly_report,
-	present
+	present,
+	get_role,
+	set_role,
+	kick,
+	ban
 };
