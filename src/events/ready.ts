@@ -1,12 +1,14 @@
 import { ActivityType, Client } from 'discord.js';
 import { deployCommands } from '@/deploy.command';
 import { config } from '@/config/config';
+import signale from 'signale';
 
 export const event = {
 	name: "ready",
 	type: "once",
 	execute: (client: Client) => {
-		console.log("Discord bot is ready! 🤖");
+		signale.start("Discord bot is ready! 🤖");
+
 		client.user?.setActivity({
 			name: 'Writing a typescript',
 			state: 'Idle',
@@ -23,7 +25,7 @@ export const event = {
 		} 
 		else 
 		{
-			console.error('Channel not found. Ensure the bot has access to the specified channel.');
+			signale.error('Channel not found. Ensure the bot has access to the specified channel.');
 		}
 	}
 }

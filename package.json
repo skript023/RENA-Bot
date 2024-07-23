@@ -15,6 +15,7 @@
   "author": "Fatur Muhammad",
   "license": "ISC",
   "devDependencies": {
+    "@types/signale": "^1.4.7",
     "tsup": "^8.2.1",
     "tsx": "^4.16.2",
     "typescript": "^5.5.3"
@@ -22,6 +23,7 @@
   "dependencies": {
     "axios": "^1.7.2",
     "discord.js": "^14.15.3",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "signale": "^1.4.0"
   }
 }

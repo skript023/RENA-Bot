@@ -1,6 +1,7 @@
 import { REST, Routes } from "discord.js";
 import { config } from "./config/config";
 import { commands } from "./commands";
+import signale from "signale";
 
 const commandsData = Object.values(commands).map((command) => command.data);
 
@@ -13,17 +14,17 @@ type DeployCommandsProps = {
 export async function deployCommands({ guildId }: DeployCommandsProps) {
     try 
     {
-        console.log("Started refreshing application (/) commands.");
+        signale.await("Started refreshing application (/) commands.");
         
         await rest.put(Routes.applicationGuildCommands(config.DISCORD_CLIENT_ID, guildId),{
                 body: commandsData,
             }
         );
 
-        console.log("Successfully reloaded application (/) commands.");
+        signale.success("Successfully reloaded application (/) commands.");
     } 
     catch (error) 
     {
-        console.error(error);
+        signale.error(error);
     }
 }
