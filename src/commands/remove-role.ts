@@ -12,7 +12,7 @@ export async function execute(interaction: CommandInteraction)
 	if (interaction.channel?.id !== '349129439927468032')
 		return;
 
-	if (member.roles.cache.some(role => role.name === "Administrator") || member.roles.cache.some(role => role.name === 'Master')) 
+	if (member.roles.cache.some(role => role.name === "Administrator" || role.name === 'Master')) 
 	{
         const user = option.getUser("user");
         
