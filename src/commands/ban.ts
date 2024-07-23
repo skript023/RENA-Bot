@@ -26,7 +26,7 @@ export async function execute(interaction: CommandInteraction)
 	
 	if (member && target) 
 	{
-		const admin = member.roles.cache.find(role => role.name === 'Administrator' || role.name === 'Master');
+		const admin = member.roles.cache.some(role => role.name === 'Administrator' || role.name === 'Master');
 
 		if (admin)
 		{

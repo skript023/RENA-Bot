@@ -1,8 +1,17 @@
-import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractionOptionResolver } from 'discord.js';
+import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractionOptionResolver, User, Role } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
   .setName("remove-role")
-  .setDescription("this is auth command");
+  .setDescription("this is auth command")
+  .addUserOption(option => 
+	option.
+	setName('user')
+	.setDescription('Select user to remove the role from')
+  ).addRoleOption(option => 
+	option
+	.setName('role')
+	.setDescription('Select role which want to be removed from user')
+  );
 
 export async function execute(interaction: CommandInteraction) 
 {
@@ -14,39 +23,30 @@ export async function execute(interaction: CommandInteraction)
 
 	if (member.roles.cache.some(role => role.name === "Administrator" || role.name === 'Master')) 
 	{
-        const user = option.getUser("user");
+        const user = option.getUser("user") as User;
+		const role = option.getRole("role") as Role;
         
         if (user) 
 		{
-            const userRemove = interaction.guild?.members.cache.get(user.id);
+            const target = await interaction.guild?.members.fetch(user.id);
             
-            if (userRemove) 
+            if (target) 
 			{
-                const role = interaction.guild?.roles.cache.find(role => role.name === 'Member');
-                
                 if (role) 
 				{
-                    await userRemove.roles.remove(role.id);
+                    const result = await target.roles.remove(role.id);
 					
-                    return interaction.reply(`${userRemove} role has been removed.`);
+                    return interaction.reply(`${role.name} role has been removed from ${result.displayName}.`);
                 } 
-				else 
-				{
-                    return interaction.reply('Role "Member" does not exist.');
-                }
-            } 
-			else 
-			{
-                return interaction.reply('The mentioned user does not exist in the guild.');
+				
+				return interaction.reply(`Role not found, unable to remove role from ${user.displayName}.`);
             }
+
+			return interaction.reply('The mentioned user does not exist in the guild.');
         } 
-		else 
-		{
-            return interaction.reply('Please mention a user to remove their role.');
-        }
+		
+		return interaction.reply('Please mention a user to remove their role.');
     } 
-	else 
-	{
-        return interaction.reply('You do not have permission to access this command.');
-    }
+	
+	return interaction.reply('You do not have permission to access this command.');
 }

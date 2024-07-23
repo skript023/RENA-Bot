@@ -22,7 +22,7 @@ export async function execute(interaction: CommandInteraction)
 	const user = opts.getUser('user') as User;
 	const role = opts.getRole('role') as Role;
 
-	signale.await(`set role ${role.name} to ${user.globalName}`);
+	signale.await(`set role ${role.name} to ${user.displayName}`);
 
 	if (!interaction.guild) 
 	{
@@ -33,9 +33,7 @@ export async function execute(interaction: CommandInteraction)
 	
 	if (member && 'roles' in member) 
 	{
-		const admin = member.roles.cache.find(role => role.name === 'Administrator' || role.name === 'Master');
-
-		if (admin)
+		if (member.roles.cache.some(role => role.name === 'Administrator' || role.name === 'Master'))
 		{
 			const target = await interaction.guild.members.fetch(user.id);
 			
@@ -43,9 +41,9 @@ export async function execute(interaction: CommandInteraction)
 			{
 				await target.roles.add(role.id);
 
-				signale.success(`set role ${role.name} to ${user.globalName}`);
+				signale.success(`set role ${role.name} to ${user.displayName}`);
 
-				return interaction.reply(`Role ${role.name} has added to: ${user?.displayName}`);
+				return interaction.reply(`Role ${role.name} has added to: ${user.displayName}`);
 			}
 
 			return interaction.reply(`Role not found`);

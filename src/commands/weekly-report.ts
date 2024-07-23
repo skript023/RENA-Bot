@@ -22,9 +22,8 @@ export async function execute(interaction: CommandInteraction)
     const end = match ? match[2] : undefined;
 
 	const member = interaction.member as GuildMember;
-    const role = member.roles.cache.find(r => r.name === 'Master');
 
-	if(!role)
+	if(!member.roles.cache.some(r => r.name === 'Master'))
 	{
 		return interaction.reply('You dont have permission to access this command');
 	} 
