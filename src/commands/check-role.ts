@@ -1,7 +1,7 @@
 import { CommandInteraction, SlashCommandBuilder, GuildMember } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
-  .setName("checkRole")
+  .setName("check_role")
   .setDescription("this is auth command");
 
 export async function execute(interaction: CommandInteraction) 

@@ -1,4 +1,4 @@
-import { Client } from 'discord.js';
+import { ActivityType, Client } from 'discord.js';
 import { deployCommands } from '@/deploy.command';
 import { config } from '@/config/config';
 
@@ -7,6 +7,11 @@ export const event = {
 	type: "once",
 	execute: (client: Client) => {
 		console.log("Discord bot is ready! 🤖");
+		client.user?.setActivity({
+			name: 'Writing a typescript',
+			state: 'Idle',
+			type: ActivityType.Playing
+		});
 
 		const channel = client.channels.cache.get('349824328520695818') as any;
 

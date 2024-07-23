@@ -2,10 +2,10 @@ import * as ping from "./ping";
 import * as sigsubstract from './sigsubstract';
 import * as info from './info';
 import * as clear from './clear';
-import * as checkRole from './check-role';
-import * as removeRole from './remove-role';
-import * as weeklyReportCheck from './weekly-report-check';
-import * as weeklyReport from './weekly-report';
+import * as check_role from './check-role';
+import * as remove_role from './remove-role';
+import * as weekly_report_check from './weekly-report-check';
+import * as weekly_report from './weekly-report';
 import * as present from './attendance';
 
 export const commands = {
@@ -13,9 +13,9 @@ export const commands = {
     sigsubstract,
 	info,
 	clear,
-	checkRole,
-	removeRole,
-	weeklyReportCheck,
-	weeklyReport,
+	check_role,
+	remove_role,
+	weekly_report_check,
+	weekly_report,
 	present
 };

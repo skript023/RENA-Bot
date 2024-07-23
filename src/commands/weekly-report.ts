@@ -2,7 +2,7 @@ import { attendance } from '@/api/rena/attendance/attendance.rena';
 import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractionOptionResolver } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
-  .setName("weeklyReportCheck")
+  .setName("weekly_report")
   .setDescription("this is weekly report command")
   .addStringOption(option => 
     option
