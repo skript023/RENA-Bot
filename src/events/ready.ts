@@ -19,13 +19,13 @@ export const event = {
 
 		deployCommands({ guildId: config.DISCORD_HELL_GATE_GUILD_ID as string });
 		
-		if (channel) 
-		{
-			channel.send('I am ready! 🤖');
-		} 
-		else 
-		{
-			signale.error('Channel not found. Ensure the bot has access to the specified channel.');
-		}
+		// if (channel) 
+		// {
+		// 	channel.send('I am ready! 🤖');
+		// } 
+		// else 
+		// {
+		// 	signale.error('Channel not found. Ensure the bot has access to the specified channel.');
+		// }
 	}
 }

@@ -1,5 +1,5 @@
 import * as ping from "./ping";
-import * as sigsubstract from './sigsubstract';
+import * as sigsubstract from './sig-substract';
 import * as info from './info';
 import * as clear from './clear';
 import * as check_role from './check-role';
@@ -14,16 +14,16 @@ import * as ban from './ban';
 
 export const commands = {
     ping,
-    sigsubstract,
+    'sig-substract': sigsubstract,
 	info,
 	clear,
-	check_role,
-	remove_role,
-	weekly_report_check,
-	weekly_report,
+	'check-role': check_role,
+	'remove-role': remove_role,
+	'weekly-report-check': weekly_report_check,
+	'weekly-report': weekly_report,
 	present,
-	get_role,
-	set_role,
+	'get-role': get_role,
+	'set-role': set_role,
 	kick,
 	ban
 };

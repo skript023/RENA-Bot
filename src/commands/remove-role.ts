@@ -1,7 +1,7 @@
 import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractionOptionResolver } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
-  .setName("remove_role")
+  .setName("remove-role")
   .setDescription("this is auth command");
 
 export async function execute(interaction: CommandInteraction) 

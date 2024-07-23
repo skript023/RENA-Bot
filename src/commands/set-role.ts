@@ -1,18 +1,28 @@
-import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractionOptionResolver, User } from 'discord.js';
+import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractionOptionResolver, User, Role } from 'discord.js';
+import signale from 'signale';
 
 export const data = new SlashCommandBuilder()
-  .setName("set_role")
-  .setDescription("this is set user role command").addStringOption(option => 
-    option
-      .setName("mention")
-      .setDescription("The mention user to add role")
-      .setRequired(true)
-  );
+	.setName("set-role")
+	.setDescription("this is set user role command")
+	.addUserOption(option => 
+		option
+		.setName("user")
+		.setDescription("The mention user to add role")
+		.setRequired(true))
+	.addRoleOption(option => 
+	option
+		.setName("role")
+		.setDescription("The mention user to add role")
+		.setRequired(true)
+	);
 
 export async function execute(interaction: CommandInteraction) 
 {
 	const opts = interaction.options as CommandInteractionOptionResolver;
-	const user = opts.getUser('mention') as User;
+	const user = opts.getUser('user') as User;
+	const role = opts.getRole('role') as Role;
+
+	signale.await(`set role ${role.name} to ${user.globalName}`);
 
 	if (!interaction.guild) 
 	{
@@ -27,14 +37,15 @@ export async function execute(interaction: CommandInteraction)
 
 		if (admin)
 		{
-			const target = await interaction.guild.members.fetch(user?.id as string);
-			const role = interaction.guild.roles.cache.find(r => r.name === "Member");
+			const target = await interaction.guild.members.fetch(user.id);
 			
 			if (role)
 			{
-				await target.roles.add(role?.id as string);
+				await target.roles.add(role.id);
 
-				return interaction.reply(`Role Member has added to: ${user?.displayName}`);
+				signale.success(`set role ${role.name} to ${user.globalName}`);
+
+				return interaction.reply(`Role ${role.name} has added to: ${user?.displayName}`);
 			}
 
 			return interaction.reply(`Role not found`);

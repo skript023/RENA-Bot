@@ -2,7 +2,8 @@ import { CommandInteraction, SlashCommandBuilder, GuildMember, CommandInteractio
 
 export const data = new SlashCommandBuilder()
   .setName("kick")
-  .setDescription("this is kick command").addStringOption(option => 
+  .setDescription("this is kick command")
+  .addUserOption(option => 
     option
       .setName("mention")
       .setDescription("The mention user to add role")

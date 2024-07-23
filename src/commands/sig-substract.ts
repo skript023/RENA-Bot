@@ -2,7 +2,7 @@ import { CommandInteraction, SlashCommandBuilder, CommandInteractionOptionResolv
 import signature from '../utils/signatures/signature';
 
 export const data = new SlashCommandBuilder()
-  .setName("sigsubstract")
+  .setName("sig-substract")
   .setDescription("Perform calculate substract signature")
   .addStringOption(option => 
     option
