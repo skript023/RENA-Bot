@@ -23,6 +23,6 @@ export async function execute(interaction: CommandInteraction)
 	{
 		const response = await attendance.present();
 
-		return interaction.reply(response.message);
+		return interaction.reply('Attendant checked');
 	}
 }
