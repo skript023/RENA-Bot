@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import signale from "signale";
 
 export const url = {
-    rena: process.env.RENA_SERVER_URL
+    rena: process.env.ENVIRONMENT === 'development' ? process.env.RENA_SERVER_DEV_URL : process.env.RENA_SERVER_URL
 };
 
 class RenaApi

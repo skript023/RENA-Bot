@@ -37,6 +37,6 @@ export async function execute(interaction: CommandInteraction)
 	{
 		const response = await attendance.weeklyReport(start, end);
 
-		return interaction.reply(response.message);
+		return interaction.reply('Weekly Report Sent Successfully');
 	}
 }
